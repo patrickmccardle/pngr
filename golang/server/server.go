@@ -34,7 +34,7 @@ func New() (*server, error) {
 func (srv *server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	handler := srv.getHandler(w, r)
 	// TODO: consider a middleware wrapper utility
-	wrappedHandler := lag(csrf(cors(handler)))
+	wrappedHandler := lag(cors(handler))
 	wrappedHandler(w, r)
 }
 
